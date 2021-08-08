@@ -9,16 +9,20 @@
 	</head>
 	<body>
 		<div id="app">
-			<div>{{ nextQuestion }}</div>
-			<ul>
-				<li
-					v-for="(answer, index) in answers"
-					:key="index"
-					@click="submitAnswer(answer)"
-				>
-					{{ answer }}
-				</li>
-			</ul>
+			<div>{{correctNumbers}} / {{totalNumbers}}</div>
+			<div v-if="questions.length">
+				<div>{{ nextQuestion }}</div>
+				<ul>
+					<li
+						v-for="(answer, index) in answers"
+						:key="index"
+						@click="submitAnswer(answer)"
+						:style="{ background: style }"
+					>
+						{{ answer }}
+					</li>
+				</ul>
+			</div>
 		</div>
 
 		<script src="app.js"></script>

@@ -5,6 +5,8 @@ const App = {
 			index: 0,
 			category: '27',
 			amount: '10',
+			correctNumbers: 0,
+			totalNumbers: 0,
 		}
 	},
 	computed: {
@@ -23,11 +25,13 @@ const App = {
 	methods: {
 		submitAnswer(answer) {
 			if (answer === this.questions[this.index].correct_answer) {
-				console.log('correct!')
+				this.correctNumbers++
 			} else {
 				console.log('wrong!')
 			}
+
 			if (this.index === this.questions.length - 1) return
+			this.totalNumbers++
 			this.index++
 		},
 	},
