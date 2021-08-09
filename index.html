@@ -6,23 +6,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Vue Trivia Game</title>
 		<script src="https://unpkg.com/vue@next"></script>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<div id="app">
 			<div>{{correctNumbers}} / {{totalNumbers}}</div>
-			<div v-if="questions.length">
-				<div>{{ nextQuestion }}</div>
-				<ul>
-					<li
-						v-for="(answer, index) in answers"
-						:key="index"
-						@click="submitAnswer(answer)"
-						:style="{ background: style }"
-					>
-						{{ answer }}
-					</li>
-				</ul>
-			</div>
+			<transition name="delaynext">
+				<div v-if="questions.length">
+					<div>{{ nextQuestion }}</div>
+					<ul>
+						<li
+							v-for="(answer, index) in answers"
+							:key="index"
+							@click="submitAnswer(answer, index)"
+							:class="background"
+						>
+							{{ answer }}
+						</li>
+					</ul>
+				</div>
+			</transition>
 		</div>
 
 		<script src="app.js"></script>

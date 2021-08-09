@@ -1,0 +1,9 @@
+.delaynext-enter-active,
+.delaynext-leave-active {
+	transition: opacity 0.5s easet ;
+}
+
+.delaynext-enter-from,
+.delaynext-leave-to {
+	opacity: 0;
+}

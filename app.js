@@ -5,12 +5,15 @@ const App = {
 			index: 0,
 			category: '27',
 			amount: '10',
+			selectedIndex: null,
 			correctNumbers: 0,
 			totalNumbers: 0,
+			background: null,
 		}
 	},
 	computed: {
 		nextQuestion() {
+			this.background = null
 			return this.questions[this.index].question
 		},
 		answers() {
@@ -23,14 +26,22 @@ const App = {
 		},
 	},
 	methods: {
-		submitAnswer(answer) {
+		submitAnswer(answer, index) {
+			this.selectedIndex = index
+
 			if (answer === this.questions[this.index].correct_answer) {
 				this.correctNumbers++
+				this.background = 'green'
 			} else {
 				console.log('wrong!')
+				this.background = 'red'
 			}
 
-			if (this.index === this.questions.length - 1) return
+			if (this.index === this.questions.length - 1) {
+				this.totalNumbers++
+				return
+			}
+
 			this.totalNumbers++
 			this.index++
 		},
