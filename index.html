@@ -13,7 +13,7 @@
 			<div>{{correctNumbers}} / {{totalNumbers}}</div>
 			<transition name="delaynext">
 				<div v-if="questions.length">
-					<div>{{ nextQuestion }}</div>
+					<div>{{questions[index].question}}</div>
 					<ul>
 						<li
 							v-for="(answer, index) in answers"
